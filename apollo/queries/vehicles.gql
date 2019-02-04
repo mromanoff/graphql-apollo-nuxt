@@ -1,0 +1,18 @@
+{
+  vehicles{
+    id
+    vehicleDetails {
+      id
+      make
+      model
+      year
+      zipCode
+      image {
+        label
+        hero {
+          md
+        }
+      }
+    }
+  }
+}
