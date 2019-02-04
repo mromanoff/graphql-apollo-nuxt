@@ -9,13 +9,16 @@
       sm8
       md6
     >
-      <v-card class="card" v-for="vehicle in vehicles" :key="vehicle.id">
+      <v-card
+        v-for="vehicle in vehicles"
+        :key="vehicle.id"
+        class="card"
+      >
         <v-img
           :src="vehicle.vehicleDetails.image.hero.md"
           :alt="`${vehicle.vehicleDetails.year } ${ vehicle.vehicleDetails.make } ${ vehicle.vehicleDetails.model} `"
           aspect-ratio="1.7"
-        ></v-img>
-
+        />
 
         <v-card-title class="headline">
           {{ vehicle.vehicleDetails.year }} {{ vehicle.vehicleDetails.make }} {{ vehicle.vehicleDetails.model }}

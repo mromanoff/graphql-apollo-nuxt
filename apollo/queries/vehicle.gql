@@ -1,5 +1,5 @@
-{
-  vehicles{
+query vehicle($id: String!) {
+  vehicle(id: $id) {
     id
     vehicleDetails {
       id

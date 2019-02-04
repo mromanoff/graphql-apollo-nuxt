@@ -42,21 +42,17 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-    '@nuxtjs/apollo'
-    // Doc: https://axios.nuxtjs.org/usage
-    //'@nuxtjs/axios'
-  ],
+  modules: ['@nuxtjs/apollo'],
 
   apollo: {
     // networkInterfaces: {
     //   default: '~/apollo/network-interfaces/default.js'
     // },
 
-    //tokenName: 'yourApolloTokenName', // optional, default: apollo-token
-    //tokenExpires: 10, // optional, default: 7 (days)
-    //includeNodeModules: true, // optional, default: false (this includes graphql-tag for node_modules folder)
-    //authenticationType: 'Basic', // optional, default: 'Bearer'
+    tokenName: 'yourApolloTokenName', // optional, default: apollo-token
+    tokenExpires: 10, // optional, default: 7 (days)
+    includeNodeModules: true, // optional, default: false (this includes graphql-tag for node_modules folder)
+    authenticationType: 'Basic', // optional, default: 'Bearer'
     // optional
     errorHandler(error) {
       console.log(
@@ -74,36 +70,10 @@ module.exports = {
         // See https://www.apollographql.com/docs/link/links/http.html#options
         httpLinkOptions: {
           credentials: 'same-origin'
-        },
-
-        ssr: true
-        // You can use `wss` for secure connection (recommended in production)
-        // Use `null` to disable subscriptions
-        //wsEndpoint: 'ws://localhost:5000', // optional
-        // LocalStorage token
-        //tokenName: 'apollo-token', // optional
-        // Enable Automatic Query persisting with Apollo Engine
-        //persisting: false, // Optional
-        // Use websockets for everything (no HTTP)
-        // You need to pass a `wsEndpoint` for this to work
-        //websocketsOnly: false // Optional
+        }
       }
-      // test: {
-      //   httpEndpoint: 'http://localhost:5000',
-      //   wsEndpoint: 'ws://localhost:5000',
-      //   tokenName: 'apollo-token'
-      // },
-      // alternative: user path to config which returns exact same config options
-      //test2: '~/plugins/my-alternative-apollo-config.js'
     }
   },
-  /*
-  ** Axios module configuration
-  */
-  //axios: {
-  // See https://github.com/nuxt-community/axios-module#options
-  //},
-
   /*
   ** Build configuration
   */
@@ -114,21 +84,21 @@ module.exports = {
       stylus: {
         import: ['~assets/style/variables.styl']
       }
-    }
+    },
 
     /*
     ** You can extend webpack config here
     */
-    // extend(config, ctx) {
-    //   // Run ESLint on save
-    //   if (ctx.isDev && ctx.isClient) {
-    //     config.module.rules.push({
-    //       enforce: 'pre',
-    //       test: /\.(js|vue)$/,
-    //       loader: 'eslint-loader',
-    //       exclude: /(node_modules)/
-    //     })
-    //   }
-    // }
+    extend(config, ctx) {
+      // Run ESLint on save
+      if (ctx.isDev && ctx.isClient) {
+        config.module.rules.push({
+          enforce: 'pre',
+          test: /\.(js|vue)$/,
+          loader: 'eslint-loader',
+          exclude: /(node_modules)/
+        })
+      }
+    }
   }
 }
